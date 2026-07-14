@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Meridian Repute
 
-## Getting Started
+Marketing site for **Meridian Repute** — an AI-era reputation management &
+brand intelligence consultancy (offices in Lahore, Pakistan and Houston, TX;
+est. 2020). A rebuild of the original static HTML demo as a fast, SEO- and
+AI-SEO-optimized **Next.js** application, deployable to Node.js shared hosting.
 
-First, run the development server:
+## Tech stack
+
+- **Next.js 16** (App Router) · **React 19** · **TypeScript**
+- **Tailwind CSS v4**
+- **zod** (validation) · **nodemailer** (consultation email)
+- Deploy target: **cPanel / Passenger** (Next.js `output: standalone`)
+
+## Quick start
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm ci
+cp -n .env.example .env.local   # optional: add SMTP creds for the form
+npm run dev                     # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+> On machines with a low OS file-watch limit, `npm run dev` uses webpack with
+> polling (configured via `.env.local`). Use `npm run dev:turbo` for Turbopack
+> on a normal machine, or `npm run preview` for a non-watching production serve.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Script | What it does |
+|---|---|
+| `npm run dev` | Dev server (webpack; polling-friendly) |
+| `npm run dev:turbo` | Dev server (Turbopack) |
+| `npm run build` | Production build (`output: standalone`) |
+| `npm run preview` | Build + serve production locally |
+| `npm run package:cpanel` | Assemble the cPanel/Passenger deploy bundle |
+| `npm run lint` / `npm run typecheck` | Quality gates |
 
-## Learn More
+## Project layout
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/app/         Routes, layout, metadata (sitemap/robots/OG), server action
+src/components/  One component per page section
+src/lib/         site-config.ts (org facts) + content.ts (marketing copy)
+docs/            Coding guidelines, design system, SEO checklist
+.claude/skills/  bootstrap · deploy-cpanel · add-page
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## SEO & AI-SEO
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Metadata API, dynamic OG image, sitemap, robots (search + AI crawlers:
+GPTBot/ClaudeBot/PerplexityBot/Google-Extended/…), JSON-LD (Organization,
+ProfessionalService, Service, FAQ), and `llms.txt`. See
+[`docs/SEO_CHECKLIST.md`](docs/SEO_CHECKLIST.md).
 
-## Deploy on Vercel
+## Documentation
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [`CLAUDE.md`](CLAUDE.md) — project rules for contributors / AI agents
+- [`DEPLOY.md`](DEPLOY.md) — cPanel / Passenger deployment walkthrough
+- [`PLAN.md`](PLAN.md) — phased execution roadmap
+- [`docs/`](docs/) — coding guidelines, design system, SEO checklist
