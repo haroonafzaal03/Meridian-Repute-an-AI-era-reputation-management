@@ -76,8 +76,7 @@ export const viewport: Viewport = {
 };
 
 function OrganizationJsonLd() {
-  const jsonLd = {
-    "@context": "https://schema.org",
+  const organization = {
     "@type": "Organization",
     "@id": `${siteConfig.url}/#organization`,
     name: siteConfig.name,
@@ -98,16 +97,29 @@ function OrganizationJsonLd() {
     contactPoint: siteConfig.offices.map((office) => ({
       "@type": "ContactPoint",
       telephone: office.telephone,
-      contactType: "customer service",
+      contactType: "sales",
       areaServed: office.addressCountry,
     })),
+  };
+
+  const website = {
+    "@type": "WebSite",
+    "@id": `${siteConfig.url}/#website`,
+    url: siteConfig.url,
+    name: siteConfig.name,
+    publisher: { "@id": `${siteConfig.url}/#organization` },
+  };
+
+  const graph = {
+    "@context": "https://schema.org",
+    "@graph": [organization, website],
   };
 
   return (
     <script
       type="application/ld+json"
       dangerouslySetInnerHTML={{
-        __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+        __html: JSON.stringify(graph).replace(/</g, "\\u003c"),
       }}
     />
   );

@@ -2,8 +2,10 @@ import { SiteNav } from "@/components/site-nav";
 import { Hero } from "@/components/hero";
 import { About } from "@/components/about";
 import { TechPartners } from "@/components/tech-partners";
+import { HowItWorks } from "@/components/how-it-works";
 import { Services } from "@/components/services";
 import { Testimonials } from "@/components/testimonials";
+import { Faq } from "@/components/faq";
 import { Statement } from "@/components/statement";
 import { ConsultationSection } from "@/components/consultation-section";
 import { ContactFooter } from "@/components/contact-footer";
@@ -92,19 +94,46 @@ function FaqJsonLd() {
   );
 }
 
+function BreadcrumbJsonLd() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: `${siteConfig.url}/`,
+      },
+    ],
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+      }}
+    />
+  );
+}
+
 export default function Home() {
   return (
     <>
       <LocalBusinessJsonLd />
       <ServiceCatalogJsonLd />
       <FaqJsonLd />
+      <BreadcrumbJsonLd />
       <SiteNav />
       <main>
         <Hero />
         <About />
         <TechPartners />
+        <HowItWorks />
         <Services />
         <Testimonials />
+        <Faq />
         <Statement />
         <ConsultationSection />
       </main>

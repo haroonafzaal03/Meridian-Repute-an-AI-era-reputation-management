@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { OrbitLabels } from "@/components/orbit-labels";
 import { capabilities } from "@/lib/content";
@@ -78,6 +79,17 @@ export function About() {
             is shaped by Google, AI assistants, reviews, news, and social
             media. We manage all of it with data-driven insight and practical
             strategy.
+          </p>
+
+          <p className="max-w-md text-[clamp(12px,1.3vw,14px)] leading-[2] font-light text-muted">
+            Every engagement follows our{" "}
+            <Link
+              href="/ethics-standards"
+              className="text-terracotta [border-bottom:1px_solid_rgba(168,98,63,0.4)] hover:[border-bottom-color:var(--color-terracotta)]"
+            >
+              Ethics &amp; Engagement Standards
+            </Link>{" "}
+            — PECA-compliant reputation defense, never fabrication.
           </p>
 
           <p className="mt-2 border-t border-border pt-6 text-[clamp(13px,1.5vw,15px)] leading-[1.9] font-extralight tracking-[0.12em] uppercase">

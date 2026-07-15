@@ -24,6 +24,19 @@ forward plan.
 - Rules & skills: `CLAUDE.md`, `docs/{CODING_GUIDELINES,DESIGN_SYSTEM,SEO_CHECKLIST}.md`,
   `.claude/skills/{bootstrap,deploy-cpanel,add-page}`.
 
+### Phase 0.1 — "Requested design changes v3" ✅ (done)
+
+- Canonical host set to **www.meridianrepute.com**; contact email corrected
+  `How@` → **`info@meridianrepute.com`** (cascades via `site-config.ts`).
+- New homepage sections: **How It Works** (4-step process) and a **visible FAQ**
+  (10 Q&As; previously only in JSON-LD). Added to nav.
+- **4 policy routes** — `/privacy-policy`, `/terms-of-service`, `/disclaimer`,
+  `/ethics-standards` — brand-styled via `PolicyShell`, each with metadata +
+  canonical.
+- Footer **legal nav** + an **Ethics link in About body copy** (selling point).
+- JSON-LD expanded to an `@graph` adding **WebSite** + **BreadcrumbList**;
+  `sitemap.ts` now lists the policy routes (no fragment URLs).
+
 ---
 
 ## Phase 1 — Content parity & real assets (1–2 days)

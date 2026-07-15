@@ -110,31 +110,93 @@ export const techPartners = [
 export const navLinks = [
   { label: "Home", href: "#hero" },
   { label: "About", href: "#about" },
+  { label: "How It Works", href: "#how-it-works" },
   { label: "Services", href: "#services" },
   { label: "Testimonials", href: "#testimonials" },
+  { label: "FAQ", href: "#faq" },
   { label: "Consultation", href: "#consultation" },
   { label: "Contact", href: "#contact" },
 ];
 
+export const howItWorks = [
+  {
+    num: "01",
+    title: "Audit",
+    desc: "We map current perception across search engines, AI assistants, social platforms, news, and reviews.",
+  },
+  {
+    num: "02",
+    title: "Score",
+    desc: "We calculate an AI Visibility Score measuring how frequently, accurately, and favorably you are cited by AI assistants.",
+  },
+  {
+    num: "03",
+    title: "Strategy",
+    desc: "We build a reputation and content strategy targeted at the surfaces that matter most to your audience.",
+  },
+  {
+    num: "04",
+    title: "Monitor",
+    desc: "We track visibility and sentiment continuously, refining the strategy as AI assistants and algorithms evolve.",
+  },
+];
+
 export const faqs = [
   {
-    question: "What is an AI visibility assessment?",
+    question: "What is AI reputation management?",
     answer:
-      "An AI visibility assessment measures how your brand or executives are described, ranked, and cited by AI assistants such as ChatGPT, Gemini, Claude, and Perplexity — then benchmarks that against traditional search visibility so you know where perception gaps exist.",
+      "AI reputation management is the practice of monitoring and shaping how AI assistants such as ChatGPT, Gemini, Claude, and Perplexity describe a person, brand, or organization, alongside traditional search and social channels.",
   },
   {
-    question: "How is AI-era reputation management different from traditional PR?",
+    question: "What is an AI Visibility Score?",
     answer:
-      "Traditional PR targets journalists and search engines. AI-era reputation management also accounts for how large language models synthesize and repeat information about you, which sources they weight most, and how to shape that narrative through structured data, authoritative citations, and continuous monitoring.",
+      "An AI Visibility Score measures how frequently, accurately, and favorably a brand or individual is cited by AI assistants and search engines, tracked over time to guide strategy.",
   },
   {
-    question: "Do you work with individuals as well as organizations?",
+    question: "Who does Meridian Repute work with?",
     answer:
-      "Yes. Meridian Repute advises both organizations (crisis readiness, brand trust) and executives individually (thought leadership, personal brand, AI visibility).",
+      "Meridian Repute works with businesses, enterprises, executive leaders, founders, public figures, and professional brands.",
   },
   {
-    question: "Where is Meridian Repute based?",
+    question: "How is Meridian Repute different from traditional PR?",
     answer:
-      "Meridian Repute has offices in Lahore, Pakistan and Houston, Texas, and works with clients globally.",
+      "Traditional PR focuses on media placement. Meridian Repute combines that discipline with AI visibility measurement, treating AI assistants and search engines as reputation surfaces of equal importance.",
   },
+  {
+    question: "How long does a reputation audit take?",
+    answer:
+      "A full reputation audit typically takes one to two weeks, covering search, AI assistants, social, news, and review surfaces.",
+  },
+  {
+    question: "Do you work with individuals as well as companies?",
+    answer:
+      "Yes. Our services apply equally to organizations and to the executives, founders, and public figures who lead them.",
+  },
+  {
+    question: "How quickly can crisis communication support begin?",
+    answer:
+      "Our crisis readiness team can be engaged immediately; clients with an existing readiness plan see the fastest response times.",
+  },
+  {
+    question: "Is the engagement confidential?",
+    answer:
+      "Yes. Discretion is core to how we operate — engagements are handled in confidence from the first conversation.",
+  },
+  {
+    question: "Which AI assistants and platforms do you monitor?",
+    answer:
+      "ChatGPT, Gemini, Claude, Perplexity, Google, and major social and review platforms, among others.",
+  },
+  {
+    question: "How is progress measured?",
+    answer:
+      "Through continuous tracking of AI Visibility Score, sentiment, mention volume, and reach, reported on a regular cadence.",
+  },
+];
+
+export const legalLinks = [
+  { label: "Privacy Policy", href: "/privacy-policy" },
+  { label: "Terms of Service", href: "/terms-of-service" },
+  { label: "Disclaimer", href: "/disclaimer" },
+  { label: "Ethics & Engagement Standards", href: "/ethics-standards" },
 ];

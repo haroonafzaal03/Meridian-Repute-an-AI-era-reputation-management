@@ -1,4 +1,6 @@
+import Link from "next/link";
 import { siteConfig } from "@/lib/site-config";
+import { legalLinks } from "@/lib/content";
 
 export function ContactFooter() {
   return (
@@ -30,6 +32,20 @@ export function ContactFooter() {
       >
         {siteConfig.email}
       </a>
+
+      <nav
+        aria-label="Legal"
+        className="flex flex-wrap justify-center gap-x-2 gap-y-1 text-[clamp(10px,1.1vw,12px)] font-light tracking-[0.08em] text-muted"
+      >
+        {legalLinks.map((link, i) => (
+          <span key={link.href} className="flex items-center gap-2">
+            <Link href={link.href} className="transition-colors hover:text-ink">
+              {link.label}
+            </Link>
+            {i < legalLinks.length - 1 && <span aria-hidden>·</span>}
+          </span>
+        ))}
+      </nav>
 
       <p className="text-[11px] font-light tracking-[0.35em] text-muted uppercase">
         {siteConfig.name} · Lahore · Est. {siteConfig.foundedYear}

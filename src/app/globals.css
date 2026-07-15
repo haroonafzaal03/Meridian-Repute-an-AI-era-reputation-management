@@ -74,3 +74,38 @@ body {
 .marquee-track {
   animation: marquee 46s linear infinite;
 }
+
+/* Legal / policy pages prose — quiet editorial treatment matching the brand. */
+.policy-prose {
+  font-weight: 300;
+  line-height: 1.75;
+}
+.policy-prose p {
+  margin-bottom: 16px;
+  font-size: 15.5px;
+}
+.policy-prose h2 {
+  margin: 64px 0 20px;
+  padding-top: 28px;
+  border-top: 1px solid var(--color-border);
+  font-weight: 300;
+  font-size: 13px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+}
+.policy-prose ul {
+  margin: 0 0 16px 20px;
+  list-style: disc;
+}
+.policy-prose li {
+  margin-bottom: 8px;
+  font-size: 15.5px;
+}
+.policy-prose a {
+  color: var(--color-ink);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.policy-prose strong {
+  font-weight: 500;
+}
