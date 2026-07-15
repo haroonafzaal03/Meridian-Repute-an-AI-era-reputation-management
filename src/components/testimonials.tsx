@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { ScrollReveal } from "@/components/scroll-reveal";
+import { NetworkGraph } from "@/components/network-graph";
 import { testimonials } from "@/lib/content";
 
 const accentColor = {
@@ -33,9 +34,10 @@ export function Testimonials() {
   return (
     <section
       id="testimonials"
-      className="flex flex-col items-center overflow-hidden px-0 py-20 text-center sm:py-28"
+      className="relative flex flex-col items-center overflow-hidden px-0 py-20 text-center sm:py-28"
     >
-      <ScrollReveal className="flex w-full max-w-6xl flex-col items-center gap-14">
+      <NetworkGraph className="inset-0 h-full w-full" />
+      <ScrollReveal className="relative flex w-full max-w-6xl flex-col items-center gap-14">
         <h2 className="text-xs font-bold tracking-[0.5em] uppercase">
           Trusted in Confidence
         </h2>

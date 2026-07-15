@@ -75,6 +75,224 @@ body {
   animation: marquee 46s linear infinite;
 }
 
+/* ─── Custom pointer / cursor ─────────────────────────────────────────────
+   Only active on fine pointers without reduced-motion — the CursorRing
+   component adds `.cursor-active` to <html> when it takes over. */
+.cursor-ring,
+.cursor-ripples {
+  display: none;
+}
+html.cursor-active,
+html.cursor-active * {
+  cursor: none !important;
+}
+html.cursor-active .cursor-ring,
+html.cursor-active .cursor-ripples {
+  display: block;
+}
+
+@keyframes cursor-core {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.7);
+  }
+}
+@keyframes cursor-spin {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+@keyframes cursor-spin-rev {
+  from {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+}
+@keyframes ripple-expand {
+  from {
+    width: 8px;
+    height: 8px;
+    opacity: 0.32;
+  }
+  to {
+    width: 170px;
+    height: 170px;
+    opacity: 0;
+  }
+}
+
+/* ─── Ambient energy layer ────────────────────────────────────────────── */
+@keyframes stream-move {
+  0% {
+    transform: translate3d(-15%, -10%, 0) rotate(8deg);
+  }
+  50% {
+    transform: translate3d(10%, 8%, 0) rotate(8deg);
+  }
+  100% {
+    transform: translate3d(-15%, -10%, 0) rotate(8deg);
+  }
+}
+@keyframes stream-move-2 {
+  0% {
+    transform: translate3d(12%, 10%, 0) rotate(-6deg);
+  }
+  50% {
+    transform: translate3d(-10%, -12%, 0) rotate(-6deg);
+  }
+  100% {
+    transform: translate3d(12%, 10%, 0) rotate(-6deg);
+  }
+}
+@keyframes pulse-travel-v {
+  0% {
+    transform: translateY(-40vh);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.55;
+  }
+  85% {
+    opacity: 0.55;
+  }
+  100% {
+    transform: translateY(140vh);
+    opacity: 0;
+  }
+}
+@keyframes pulse-travel-h {
+  0% {
+    transform: translateX(-40vw);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.45;
+  }
+  85% {
+    opacity: 0.45;
+  }
+  100% {
+    transform: translateX(140vw);
+    opacity: 0;
+  }
+}
+@keyframes flicker {
+  0%,
+  100% {
+    opacity: 0.1;
+  }
+  45% {
+    opacity: 0.35;
+  }
+  55% {
+    opacity: 0.08;
+  }
+}
+
+/* ─── Section decorations ─────────────────────────────────────────────── */
+@keyframes ring-ghost {
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: translate(-50%, -50%) scale(1.03);
+  }
+}
+@keyframes shimmer-sweep {
+  0%,
+  92% {
+    transform: translateX(-140%) skewX(-18deg);
+    opacity: 0;
+  }
+  94% {
+    opacity: 0.5;
+  }
+  98% {
+    transform: translateX(140%) skewX(-18deg);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(140%) skewX(-18deg);
+    opacity: 0;
+  }
+}
+@keyframes blob-float-1 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-14px, 10px) scale(1.05);
+  }
+}
+@keyframes blob-float-2 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(12px, -14px) scale(1.04);
+  }
+}
+@keyframes ink-drift {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translate(8px, -10px) scale(1.08);
+    opacity: 0.75;
+  }
+}
+@keyframes ink-drift-big {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) translate(0, 0) scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translate(-50%, -50%) translate(4px, -4px) scale(1.03);
+    opacity: 0.7;
+  }
+}
+@keyframes network-drift {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-16px, 12px);
+  }
+}
+@keyframes ring-orbit {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes ring-orbit-rev {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
 /* Legal / policy pages prose — quiet editorial treatment matching the brand. */
 .policy-prose {
   font-weight: 300;

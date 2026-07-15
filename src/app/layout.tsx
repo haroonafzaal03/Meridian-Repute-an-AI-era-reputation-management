@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Jost } from "next/font/google";
 import { siteConfig } from "@/lib/site-config";
+import { CursorRing } from "@/components/cursor-ring";
 import "./globals.css";
 
 const jost = Jost({
@@ -134,6 +135,7 @@ export default function RootLayout({
     <html lang="en" className={`${jost.variable}`}>
       <body className="min-h-screen bg-cream text-ink font-sans antialiased">
         <OrganizationJsonLd />
+        <CursorRing />
         {children}
       </body>
     </html>

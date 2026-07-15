@@ -9,6 +9,7 @@ import { Faq } from "@/components/faq";
 import { Statement } from "@/components/statement";
 import { ConsultationSection } from "@/components/consultation-section";
 import { ContactFooter } from "@/components/contact-footer";
+import { AmbientEnergy } from "@/components/ambient-energy";
 import { siteConfig } from "@/lib/site-config";
 import { services, faqs } from "@/lib/content";
 
@@ -126,7 +127,8 @@ export default function Home() {
       <FaqJsonLd />
       <BreadcrumbJsonLd />
       <SiteNav />
-      <main>
+      <AmbientEnergy />
+      <main className="relative z-10">
         <Hero />
         <About />
         <TechPartners />
@@ -137,7 +139,9 @@ export default function Home() {
         <Statement />
         <ConsultationSection />
       </main>
-      <ContactFooter />
+      <div className="relative z-10">
+        <ContactFooter />
+      </div>
     </>
   );
 }

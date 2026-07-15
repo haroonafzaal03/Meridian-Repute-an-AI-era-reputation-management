@@ -11,9 +11,16 @@ export function ConsultationSection() {
         <div className="flex flex-col gap-9 text-left">
           <div
             aria-hidden
-            className="flex h-40 w-40 items-center justify-center rounded-full border border-border"
+            className="relative flex h-40 w-40 items-center justify-center rounded-full border border-border"
           >
-            <div className="flex flex-col items-center gap-2">
+            <div className="absolute inset-2.5 rounded-full border border-dashed border-[rgba(46,89,81,0.35)]" />
+            <div className="absolute inset-0 [animation:ring-orbit_10s_linear_infinite]">
+              <div className="absolute top-1/2 left-1/2 h-[7px] w-[7px] -translate-y-1/2 translate-x-[70px] rounded-full bg-terracotta shadow-[0_0_8px_rgba(168,98,63,0.7)]" />
+            </div>
+            <div className="absolute inset-0 [animation:ring-orbit-rev_13s_linear_infinite]">
+              <div className="absolute top-1/2 left-1/2 h-1.5 w-1.5 -translate-y-1/2 translate-x-[70px] rounded-full bg-forest shadow-[0_0_8px_rgba(46,89,81,0.6)]" />
+            </div>
+            <div className="relative flex flex-col items-center gap-2">
               <span className="text-[15px] font-extralight tracking-[0.16em] uppercase">
                 Meridian
               </span>

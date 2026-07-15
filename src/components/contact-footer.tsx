@@ -1,14 +1,16 @@
 import Link from "next/link";
 import { siteConfig } from "@/lib/site-config";
 import { legalLinks } from "@/lib/content";
+import { NetworkGraph } from "@/components/network-graph";
 
 export function ContactFooter() {
   return (
     <footer
       id="contact"
-      className="flex flex-col items-center gap-12 px-6 py-20 text-center sm:py-24"
+      className="relative flex flex-col items-center gap-12 overflow-hidden px-6 py-20 text-center sm:py-24"
     >
-      <div className="flex flex-wrap justify-center gap-14">
+      <NetworkGraph className="-inset-[10%] h-[120%] w-[120%]" />
+      <div className="relative flex flex-wrap justify-center gap-14">
         {siteConfig.offices.map((office) => (
           <address key={office.id} className="flex flex-col items-center gap-2.5 not-italic">
             <span className="text-[11px] font-bold tracking-[0.35em] uppercase">
@@ -28,14 +30,14 @@ export function ContactFooter() {
 
       <a
         href={`mailto:${siteConfig.email}`}
-        className="border-b border-border pb-0.5 text-[13px] tracking-[0.15em] transition-[letter-spacing] duration-[400ms] hover:tracking-[0.25em]"
+        className="relative border-b border-border pb-0.5 text-[13px] tracking-[0.15em] transition-[letter-spacing] duration-[400ms] hover:tracking-[0.25em]"
       >
         {siteConfig.email}
       </a>
 
       <nav
         aria-label="Legal"
-        className="flex flex-wrap justify-center gap-x-2 gap-y-1 text-[clamp(10px,1.1vw,12px)] font-light tracking-[0.08em] text-muted"
+        className="relative flex flex-wrap justify-center gap-x-2 gap-y-1 text-[clamp(10px,1.1vw,12px)] font-light tracking-[0.08em] text-muted"
       >
         {legalLinks.map((link, i) => (
           <span key={link.href} className="flex items-center gap-2">
@@ -47,7 +49,7 @@ export function ContactFooter() {
         ))}
       </nav>
 
-      <p className="text-[11px] font-light tracking-[0.35em] text-muted uppercase">
+      <p className="relative text-[11px] font-light tracking-[0.35em] text-muted uppercase">
         {siteConfig.name} · Lahore · Est. {siteConfig.foundedYear}
       </p>
     </footer>

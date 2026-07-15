@@ -20,6 +20,14 @@ const accentColor = {
 export function About() {
   return (
     <section id="about" className="relative overflow-hidden px-6 py-24 sm:py-32">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -top-[8%] -left-[6%] h-[420px] w-[420px] rounded-full blur-[10px] [animation:blob-float-1_16s_ease-in-out_infinite] [background:radial-gradient(circle,rgba(168,98,63,0.16),transparent_70%)]"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -right-[8%] -bottom-[10%] h-[460px] w-[460px] rounded-full blur-[10px] [animation:blob-float-2_19s_ease-in-out_infinite] [background:radial-gradient(circle,rgba(46,89,81,0.14),transparent_70%)]"
+      />
       <ScrollReveal
         as="section"
         className="relative mx-auto grid max-w-5xl items-center gap-16 sm:grid-cols-2"
