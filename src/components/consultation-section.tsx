@@ -15,10 +15,10 @@ export function ConsultationSection() {
           >
             <div className="absolute inset-2.5 rounded-full border border-dashed border-[rgba(46,89,81,0.35)]" />
             <div className="absolute inset-0 [animation:ring-orbit_10s_linear_infinite]">
-              <div className="absolute top-1/2 left-1/2 h-[7px] w-[7px] -translate-y-1/2 translate-x-[70px] rounded-full bg-terracotta shadow-[0_0_8px_rgba(168,98,63,0.7)]" />
+              <div className="absolute top-1/2 left-1/2 mt-[-3.5px] ml-[-3.5px] h-[7px] w-[7px] rounded-full bg-terracotta shadow-[0_0_8px_rgba(168,98,63,0.7)] [animation:radius-flow-out_4s_ease-in-out_infinite]" />
             </div>
             <div className="absolute inset-0 [animation:ring-orbit-rev_13s_linear_infinite]">
-              <div className="absolute top-1/2 left-1/2 h-1.5 w-1.5 -translate-y-1/2 translate-x-[70px] rounded-full bg-forest shadow-[0_0_8px_rgba(46,89,81,0.6)]" />
+              <div className="absolute top-1/2 left-1/2 mt-[-3px] ml-[-3px] h-1.5 w-1.5 rounded-full bg-forest shadow-[0_0_8px_rgba(46,89,81,0.6)] [animation:radius-flow-in_4s_ease-in-out_infinite_2s]" />
             </div>
             <div className="relative flex flex-col items-center gap-2">
               <span className="text-[15px] font-extralight tracking-[0.16em] uppercase">

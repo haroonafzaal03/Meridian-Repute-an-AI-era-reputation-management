@@ -49,11 +49,24 @@ are logos, not theme colors.
 
 ## Motion
 
-- Entrances: `ScrollReveal` (IntersectionObserver → `fade-up`, opacity+translate).
-- Ambient: orbit-label `float`, marquee scroll, hover letter-spacing/translate.
+Motion is layered — keep each layer subtle; the brand whispers.
+
+- **Hero entrance** (on load, CSS): ring scales in (`hero-ring-in`) then
+  `breathe`s; "MERIDIAN" expands its letter-spacing (`hero-word-in`); hairlines
+  grow (`hairline-grow`); tagline `fade-up`s last.
+- **Entrances on scroll**: `ScrollReveal` (IntersectionObserver → `fade-up`).
+- **Custom pointer**: `CursorRing` (fine pointers, no reduced-motion only).
+- **Ambient layer** (`AmbientEnergy`): drifting streams, pulse lines, flickers.
+- **Physics dots** (`PhysicsDots`): rAF bouncing dots inside the hero ring
+  (circular boundary) and the Statement frame (rectangular). Frozen under
+  reduced-motion.
+- **Section decor** (CSS keyframes in `globals.css`): orbit-label `drift-a/b/c`,
+  hero `ring-ghost` + `shimmer-sweep`, About/Statement blob floats, Statement
+  `organic-morph` frames, `network-drift` constellations, consultation
+  `ring-orbit` + `radius-flow` dots, `marquee`.
 - **Every** animation is `motion-safe:` gated or covered by the global
-  `prefers-reduced-motion` reset in `globals.css`. Keep it subtle and slow
-  (0.9s–46s); this brand whispers.
+  `prefers-reduced-motion` reset in `globals.css`. New JS-driven motion
+  (`PhysicsDots`, `CursorRing`) must check `matchMedia` and no-op when reduced.
 
 ## Shape language
 

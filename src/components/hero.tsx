@@ -1,4 +1,5 @@
 import { OrbitLabels } from "@/components/orbit-labels";
+import { PhysicsDots } from "@/components/physics-dots";
 
 const orbitPlatforms = [
   { name: "ChatGPT", color: "#10A37F" },
@@ -36,27 +37,53 @@ export function Hero() {
       <div className="relative flex aspect-square w-[min(88vw,600px)] items-center justify-center">
         <OrbitLabels items={orbitPlatforms} radiusPercent={48} />
 
-        <h1 className="flex aspect-square w-[min(66vw,380px)] flex-col items-center justify-center gap-4 rounded-full border border-border bg-cream p-4 sm:gap-6">
-          <span className="sr-only">
-            Meridian Repute — AI-Era Reputation Management &amp; Brand Intelligence
-          </span>
-          <span
-            aria-hidden
-            className="text-[clamp(18px,7vw,42px)] font-extralight tracking-[0.22em] whitespace-nowrap uppercase"
-          >
-            Meridian
-          </span>
-          <span aria-hidden className="flex items-center gap-3 sm:gap-4">
-            <span className="h-px w-6 bg-ink sm:w-8" />
-            <span className="text-[clamp(9px,2.2vw,14px)] font-light tracking-[0.4em] whitespace-nowrap uppercase">
-              Repute
+        <div className="relative aspect-square w-[min(66vw,380px)] opacity-0 [animation:hero-ring-in_1.4s_cubic-bezier(0.2,0.7,0.2,1)_forwards,breathe_8s_ease-in-out_1.4s_infinite]">
+          <PhysicsDots
+            boundary="circle"
+            pad={14}
+            dots={[
+              {
+                size: 8,
+                background: "radial-gradient(circle at 35% 30%, #D89A73, #A8623F 70%)",
+                boxShadow: "0 0 8px rgba(168,98,63,0.6)",
+                x: 18,
+                y: -14,
+                vx: 0.35,
+                vy: 0.45,
+              },
+              {
+                size: 6,
+                background: "radial-gradient(circle at 35% 30%, #5C8A81, #2E5951 70%)",
+                boxShadow: "0 0 8px rgba(46,89,81,0.55)",
+                x: -22,
+                y: 16,
+                vx: -0.42,
+                vy: 0.3,
+              },
+            ]}
+          />
+          <h1 className="flex h-full w-full flex-col items-center justify-center gap-4 rounded-full border border-border bg-cream/80 p-4 sm:gap-6">
+            <span className="sr-only">
+              Meridian Repute — AI-Era Reputation Management &amp; Brand Intelligence
             </span>
-            <span className="h-px w-6 bg-ink sm:w-8" />
-          </span>
-        </h1>
+            <span
+              aria-hidden
+              className="text-[clamp(18px,7vw,42px)] font-extralight tracking-[0.22em] whitespace-nowrap uppercase opacity-0 [animation:hero-word-in_1.6s_cubic-bezier(0.2,0.7,0.2,1)_0.3s_both]"
+            >
+              Meridian
+            </span>
+            <span aria-hidden className="flex items-center gap-3 sm:gap-4">
+              <span className="h-px w-6 origin-right bg-ink [animation:hairline-grow_1s_ease_0.9s_both] sm:w-8" />
+              <span className="text-[clamp(9px,2.2vw,14px)] font-light tracking-[0.4em] whitespace-nowrap uppercase">
+                Repute
+              </span>
+              <span className="h-px w-6 origin-left bg-ink [animation:hairline-grow_1s_ease_0.9s_both] sm:w-8" />
+            </span>
+          </h1>
+        </div>
       </div>
 
-      <p className="mt-11 max-w-3xl text-[clamp(11px,1.4vw,14px)] font-light tracking-[0.35em] uppercase">
+      <p className="mt-11 max-w-3xl text-[clamp(11px,1.4vw,14px)] font-light tracking-[0.35em] uppercase opacity-0 [animation:fade-up_0.9s_cubic-bezier(0.2,0.7,0.2,1)_1.1s_both]">
         Your reputation speaks before you do.
       </p>
     </section>

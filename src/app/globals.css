@@ -62,6 +62,144 @@ body {
   }
 }
 
+/* Orbit-label organic drift — three variants for varied, non-synchronised motion.
+   Each keeps the -50%,-50% centering baked in. */
+@keyframes drift-a {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) translate(0, 0);
+    opacity: 0.72;
+  }
+  50% {
+    transform: translate(-50%, -50%) translate(6px, -14px);
+    opacity: 1;
+  }
+}
+@keyframes drift-b {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) translate(0, 0);
+    opacity: 0.68;
+  }
+  50% {
+    transform: translate(-50%, -50%) translate(-8px, 10px);
+    opacity: 0.95;
+  }
+}
+@keyframes drift-c {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) translate(0, 0);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translate(-50%, -50%) translate(4px, 12px);
+    opacity: 0.97;
+  }
+}
+
+/* Hero entrance sequence. */
+@keyframes hero-ring-in {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes breathe {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.015);
+  }
+}
+@keyframes hero-word-in {
+  from {
+    opacity: 0;
+    letter-spacing: 0.05em;
+  }
+  to {
+    opacity: 1;
+    letter-spacing: 0.22em;
+  }
+}
+@keyframes hairline-grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* Statement frame morph + third blob + orbit-dot radius pulse. */
+@keyframes organic-morph {
+  0% {
+    border-radius: 42% 58% 55% 45% / 45% 40% 60% 55%;
+  }
+  33% {
+    border-radius: 58% 42% 40% 60% / 55% 60% 40% 45%;
+  }
+  66% {
+    border-radius: 45% 55% 60% 40% / 40% 55% 45% 60%;
+  }
+  100% {
+    border-radius: 42% 58% 55% 45% / 45% 40% 60% 55%;
+  }
+}
+@keyframes blob-float-3 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-10px, -12px) scale(1.06);
+  }
+}
+@keyframes radius-flow-out {
+  0%,
+  100% {
+    transform: translateX(78px);
+    opacity: 1;
+  }
+  45% {
+    transform: translateX(70px);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateX(70px);
+    opacity: 1;
+  }
+  95% {
+    transform: translateX(78px);
+    opacity: 0.6;
+  }
+}
+@keyframes radius-flow-in {
+  0%,
+  100% {
+    transform: translateX(70px);
+    opacity: 1;
+  }
+  45% {
+    transform: translateX(78px);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateX(78px);
+    opacity: 1;
+  }
+  95% {
+    transform: translateX(70px);
+    opacity: 0.6;
+  }
+}
+
 @keyframes marquee {
   from {
     transform: translateX(0);
