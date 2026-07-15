@@ -1,6 +1,8 @@
 type OrbitItem = {
   name: string;
   color: string;
+  /** Optional metric value rendered after the name (e.g. "88%"). */
+  value?: string;
 };
 
 /** Positions a set of labels evenly around a circle, radiating from the center of a relatively-positioned parent. */
@@ -37,10 +39,11 @@ export function OrbitLabels({
               style={{ backgroundColor: item.color, boxShadow: `0 0 6px ${item.color}` }}
             />
             <span
-              className="text-[10px] font-normal tracking-[0.22em]"
+              className="text-[clamp(7px,0.8vw,9px)] font-normal tracking-[0.18em]"
               style={{ color: item.color }}
             >
               {item.name.toUpperCase()}
+              {item.value && <span className="opacity-60"> · {item.value}</span>}
             </span>
           </div>
         );
