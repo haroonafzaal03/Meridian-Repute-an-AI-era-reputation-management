@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
     "How Meridian Repute collects, uses, and protects personal information across our website, consultations, and reputation intelligence services.",
-  alternates: { canonical: "/privacy-policy" },
+  alternates: { canonical: "/privacy-policy/" },
 };
 
 export default function PrivacyPolicyPage() {

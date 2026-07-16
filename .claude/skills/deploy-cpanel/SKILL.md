@@ -1,56 +1,55 @@
 ---
 name: deploy-cpanel
-description: Build and package the Meridian Repute site for deployment to Node.js shared hosting (cPanel / Passenger). Use when preparing a release, creating the upload bundle, or troubleshooting a shared-hosting deploy.
+description: Build and package the Meridian Repute static site for deployment to cPanel / Apache shared hosting (Namecheap). Use when preparing a release, creating the upload bundle, or troubleshooting the live site.
 ---
 
-# Package Meridian Repute for cPanel / Passenger
+# Package Meridian Repute for cPanel (static)
 
-The site deploys as a **Next.js standalone Node server** to cPanel's
-"Setup Node.js App" (Passenger). Full walkthrough: `DEPLOY.md`.
+The site is a **static export** (`output: "export"`) — plain HTML/CSS/JS plus a
+`contact.php` mailer. No Node runtime on the server. Full walkthrough:
+`DEPLOY.md`.
 
 ## Build the upload bundle
 
-1. Ensure the production site URL is set (it's inlined at build time):
-   confirm `NEXT_PUBLIC_SITE_URL` in `.env.local` (or the shell) is the real
-   domain, e.g. `https://meridianrepute.com`.
+1. Confirm the canonical host is right (inlined at build time):
+   `NEXT_PUBLIC_SITE_URL` defaults to `https://www.meridianrepute.com`.
 
-2. Run the packaging script:
+2. Package:
    ```bash
    npm run package:cpanel
    ```
-   This does `next build`, copies `public/` and `.next/static/` into
-   `.next/standalone/` (required — assets 404 otherwise), and produces:
-   - `./deploy/` — the folder to upload, and
-   - `./meridian-repute-standalone.zip` — zipped equivalent.
+   Runs `scripts/build-static.sh` → `next build` (produces `out/`) → zips it to
+   `meridian-repute-static.zip` (including the hidden `.htaccess`).
 
-3. **Smoke-test the bundle locally** before uploading:
+3. Smoke-test locally (PHP won't run under a static server, so the form will
+   show its error path — that's expected):
    ```bash
-   (cd deploy && PORT=3999 NODE_ENV=production node server.js) &
-   sleep 3
-   curl -s -o /dev/null -w "%{http_code}\n" http://localhost:3999/
-   curl -s http://localhost:3999/robots.txt | head
-   kill %1
+   npx --yes serve@latest out -l 3000
+   curl -s -o /dev/null -w "%{http_code}\n" http://localhost:3000/
+   curl -s http://localhost:3000/robots.txt | head
    ```
-   Expect `200` and a robots.txt whose `Host:`/`Sitemap:` show the production
-   domain.
 
-## Deploy to cPanel (summary — see DEPLOY.md for detail)
+## Deploy (summary — see DEPLOY.md)
 
-1. cPanel → **Setup Node.js App** → create app (Node 20/22, mode Production,
-   startup file `server.js`), then Stop it.
-2. Upload + extract `meridian-repute-standalone.zip` into the app's
-   Application root (should contain `server.js`, `.next/`, `public/`,
-   `node_modules/`).
-3. Add environment variables (see `.env.example`): `NODE_ENV=production`,
-   `NEXT_PUBLIC_SITE_URL`, and the `SMTP_*` / `CONSULTATION_TO_EMAIL` values.
-4. **Restart** the app; verify `/`, `/robots.txt`, `/sitemap.xml`,
-   `/opengraph-image`, and a real form submission.
+1. cPanel File Manager → open the `meridianrepute.com/` addon-domain doc root.
+2. **Remove the old demo** files first (index.html, image-slot.js, support.js,
+   scraps/, uploads/, old robots.txt/sitemap.xml, the zips).
+3. Upload + extract `meridian-repute-static.zip` there (enable "Show Hidden
+   Files" so `.htaccess` is visible; upload it manually if missing).
+4. Ensure `info@meridianrepute.com` mailbox exists (or edit `$TO` in
+   `contact.php`); set SPF/DKIM via Email Deliverability.
+5. Run AutoSSL; verify home, the four `/…/` policy pages, robots, sitemap, the
+   OG image, and a real form submission.
 
 ## Common issues
 
-- **CSS/JS 404s:** `public/` or `.next/static/` weren't copied — re-run
-  `npm run package:cpanel` (the script handles this).
-- **Form 500 / no email:** check `SMTP_*` env vars; read stderr in Setup
-  Node.js App. The action logs failures there.
-- **Wrong domain in sitemap/canonical:** `NEXT_PUBLIC_SITE_URL` was wrong at
-  build time — fix it and rebuild.
+- **CSS/JS 404 or unstyled page:** the `_next/` folder wasn't uploaded — re-upload
+  the full `out/` contents.
+- **Clean URLs 404 (e.g. /privacy-policy/):** `.htaccess` missing or hidden
+  files not uploaded. Confirm `.htaccess` is in the doc root.
+- **Form shows an error / no email:** `contact.php` not present, PHP disabled,
+  or mail/SPF misconfigured. Check the mailbox exists and Email Deliverability.
+- **Wrong host in sitemap/canonical:** rebuild with the correct
+  `NEXT_PUBLIC_SITE_URL`.
+- **OG image broken in social previews:** ensure `.htaccess` uploaded (it forces
+  `image/png` on the extensionless `opengraph-image` file).

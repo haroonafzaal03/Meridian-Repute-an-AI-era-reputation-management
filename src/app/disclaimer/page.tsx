@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "Disclaimer",
   description:
     "Important disclaimers about the information on the Meridian Repute website and the nature of reputation intelligence services.",
-  alternates: { canonical: "/disclaimer" },
+  alternates: { canonical: "/disclaimer/" },
 };
 
 export default function DisclaimerPage() {

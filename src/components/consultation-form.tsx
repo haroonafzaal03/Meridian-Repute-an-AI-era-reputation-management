@@ -1,36 +1,64 @@
 "use client";
 
-import { useActionState } from "react";
-import { useFormStatus } from "react-dom";
-import { submitConsultation, type ConsultationState } from "@/app/actions/consultation";
+import { useState } from "react";
+import { siteConfig } from "@/lib/site-config";
 
-const initialConsultationState: ConsultationState = { status: "idle", message: "" };
-
-function SubmitButton() {
-  const { pending } = useFormStatus();
-
-  return (
-    <button
-      type="submit"
-      disabled={pending}
-      className="group mt-2 flex items-center gap-2.5 self-start border border-ink bg-transparent px-11 py-[18px] text-[11px] font-light tracking-[0.4em] uppercase transition-[letter-spacing,background-color,color,transform,box-shadow] duration-[400ms] hover:-translate-y-0.5 hover:bg-ink hover:tracking-[0.55em] hover:text-cream hover:shadow-[0_16px_32px_rgba(26,26,26,0.22)] disabled:cursor-not-allowed disabled:opacity-60"
-    >
-      {pending ? "Sending…" : "Request a Consultation"}
-      <span
-        aria-hidden
-        className="inline-block -translate-x-2 opacity-0 transition-[transform,opacity] duration-[400ms] group-hover:translate-x-0 group-hover:opacity-100"
-      >
-        →
-      </span>
-    </button>
-  );
-}
+type Status = "idle" | "sending" | "success" | "error";
 
 export function ConsultationForm() {
-  const [state, formAction] = useActionState(submitConsultation, initialConsultationState);
+  const [status, setStatus] = useState<Status>("idle");
+  const [message, setMessage] = useState("");
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const data = new FormData(form);
+
+    setStatus("sending");
+    setMessage("");
+
+    try {
+      const res = await fetch("/contact.php", {
+        method: "POST",
+        body: data,
+        headers: { Accept: "application/json" },
+      });
+      const json = (await res.json().catch(() => ({}))) as {
+        ok?: boolean;
+        error?: string;
+      };
+
+      if (res.ok && json.ok) {
+        setStatus("success");
+        setMessage("Thank you — we'll be in touch shortly.");
+        form.reset();
+      } else {
+        setStatus("error");
+        setMessage(
+          json.error ||
+            `Something went wrong. Please email us directly at ${siteConfig.email}.`
+        );
+      }
+    } catch {
+      setStatus("error");
+      setMessage(
+        `Couldn't reach the server. Please email us directly at ${siteConfig.email}.`
+      );
+    }
+  }
 
   return (
-    <form action={formAction} className="flex flex-col gap-7">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-7">
+      {/* Honeypot: bots fill this; humans never see it. */}
+      <input
+        type="text"
+        name="company_website"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden
+        className="absolute -left-[9999px] h-0 w-0 opacity-0"
+      />
+
       <div className="flex flex-col gap-2">
         <label htmlFor="name" className="text-[10px] font-light tracking-[0.3em] text-muted uppercase">
           Name
@@ -72,14 +100,27 @@ export function ConsultationForm() {
         />
       </div>
 
-      <SubmitButton />
+      <button
+        type="submit"
+        disabled={status === "sending"}
+        className="group mt-2 flex items-center gap-2.5 self-start border border-ink bg-transparent px-11 py-[18px] text-[11px] font-light tracking-[0.4em] uppercase transition-[letter-spacing,background-color,color,transform,box-shadow] duration-[400ms] hover:-translate-y-0.5 hover:bg-ink hover:tracking-[0.55em] hover:text-cream hover:shadow-[0_16px_32px_rgba(26,26,26,0.22)] disabled:cursor-not-allowed disabled:opacity-60"
+      >
+        {status === "sending" ? "Sending…" : "Request a Consultation"}
+        <span
+          aria-hidden
+          className="inline-block -translate-x-2 opacity-0 transition-[transform,opacity] duration-[400ms] group-hover:translate-x-0 group-hover:opacity-100"
+        >
+          →
+        </span>
+      </button>
 
       <p
         role="status"
         aria-live="polite"
-        className="min-h-4 text-[11px] font-light tracking-[0.05em] text-muted"
+        className="min-h-4 text-[11px] font-light tracking-[0.05em]"
+        style={{ color: status === "error" ? "var(--color-terracotta)" : "var(--color-muted)" }}
       >
-        {state.message}
+        {message}
       </p>
     </form>
   );

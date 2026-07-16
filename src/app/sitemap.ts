@@ -1,6 +1,8 @@
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/lib/site-config";
 
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
 
@@ -12,25 +14,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
-      url: `${siteConfig.url}/ethics-standards`,
+      url: `${siteConfig.url}/ethics-standards/`,
       lastModified: now,
       changeFrequency: "yearly",
       priority: 0.6,
     },
     {
-      url: `${siteConfig.url}/privacy-policy`,
+      url: `${siteConfig.url}/privacy-policy/`,
       lastModified: now,
       changeFrequency: "yearly",
       priority: 0.3,
     },
     {
-      url: `${siteConfig.url}/terms-of-service`,
+      url: `${siteConfig.url}/terms-of-service/`,
       lastModified: now,
       changeFrequency: "yearly",
       priority: 0.3,
     },
     {
-      url: `${siteConfig.url}/disclaimer`,
+      url: `${siteConfig.url}/disclaimer/`,
       lastModified: now,
       changeFrequency: "yearly",
       priority: 0.3,

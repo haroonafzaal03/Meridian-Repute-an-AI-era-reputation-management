@@ -1,0 +1,47 @@
+# Meridian Repute — static site config for cPanel / Apache
+# Shipped in the site root by the Next.js static export (public/.htaccess).
+
+Options -MultiViews -Indexes
+
+# ─── Force HTTPS + canonical www host ────────────────────────────────────────
+RewriteEngine On
+
+# http → https
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# non-www → www (canonical host is https://www.meridianrepute.com)
+RewriteCond %{HTTP_HOST} ^meridianrepute\.com$ [NC]
+RewriteRule ^ https://www.meridianrepute.com%{REQUEST_URI} [L,R=301]
+
+# Routes are exported as <route>/index.html (trailingSlash), so Apache's
+# DirectoryIndex serves clean URLs like /privacy-policy/ with no extra rules.
+
+# ─── Custom 404 ──────────────────────────────────────────────────────────────
+ErrorDocument 404 /404.html
+
+# ─── Open Graph image has no file extension — force its MIME type ─────────────
+<Files "opengraph-image">
+  ForceType image/png
+</Files>
+
+# ─── Security headers ────────────────────────────────────────────────────────
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+  # Long-cache Next's fingerprinted static assets.
+  <FilesMatch "\.(?:js|css|woff2?|svg|png|jpg|jpeg|gif|webp|avif|ico)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  # Never cache HTML (so content updates show immediately).
+  <FilesMatch "\.html$">
+    Header set Cache-Control "public, max-age=0, must-revalidate"
+  </FilesMatch>
+</IfModule>
+
+# ─── Compression ─────────────────────────────────────────────────────────────
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/javascript application/json image/svg+xml
+</IfModule>

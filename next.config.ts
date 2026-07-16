@@ -2,29 +2,21 @@ import type { NextConfig } from "next";
 import path from "node:path";
 
 const nextConfig: NextConfig = {
-  // Required for cPanel/Passenger (Node.js-capable shared hosting): produces
-  // .next/standalone with a minimal server.js that doesn't need node_modules installed.
-  // See DEPLOY.md.
-  output: "standalone",
-  compress: true,
+  // Static HTML export for plain cPanel/Apache shared hosting (no Node runtime).
+  // Produces `out/` — upload its contents to the domain's document root.
+  // Security headers, HTTPS redirect, clean URLs, caching are handled by the
+  // .htaccess shipped in public/. See DEPLOY.md.
+  output: "export",
+  // Emit each route as <route>/index.html so Apache serves clean directory URLs
+  // (e.g. /privacy-policy/) without extra rewrite rules or 403s.
+  trailingSlash: true,
   poweredByHeader: false,
   turbopack: {
     root: path.join(__dirname),
   },
   images: {
-    formats: ["image/avif", "image/webp"],
-  },
-  async headers() {
-    return [
-      {
-        source: "/:path*",
-        headers: [
-          { key: "X-Content-Type-Options", value: "nosniff" },
-          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
-          { key: "X-Frame-Options", value: "SAMEORIGIN" },
-        ],
-      },
-    ];
+    // No server-side image optimizer in a static export.
+    unoptimized: true,
   },
 };
 

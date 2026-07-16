@@ -4,7 +4,9 @@
 
 Marketing site for **Meridian Repute**, an AI-era reputation management &
 brand intelligence consultancy. Built with Next.js 16 (App Router) + Tailwind
-CSS v4, deployed as a Node standalone server on cPanel/Passenger shared hosting.
+CSS v4, shipped as a **static export** (`output: "export"`) to cPanel/Apache
+shared hosting (Namecheap). The only server-side piece is `public/contact.php`,
+which handles the consultation form via PHP mail().
 
 Read `docs/CODING_GUIDELINES.md`, `docs/DESIGN_SYSTEM.md`, and
 `docs/SEO_CHECKLIST.md` before non-trivial work. Read `DEPLOY.md` before
@@ -20,12 +22,13 @@ touching build/deploy. `PLAN.md` is the roadmap.
 3. **Server Components by default.** Only add `"use client"` when a component
    needs state, effects, or event handlers (nav toggle, testimonials drag,
    consultation form). Keep client components small and leaf-level.
-4. **`"use server"` files export only async functions.** Types/constants used
-   by the client belong in the client file, not the action file. (This bit us
-   once — see `src/components/consultation-form.tsx`.)
+4. **No server runtime — it's a static export.** No Server Actions, API routes,
+   ISR, or `next/image` optimization (images are `unoptimized`). Forms post to a
+   PHP endpoint (`public/contact.php`). Metadata routes are marked
+   `export const dynamic = "force-static"`.
 5. **SEO is a feature, not an afterthought.** Any new page/route must set
-   `metadata` (title, description, canonical), be added to `sitemap.ts`, and get
-   relevant JSON-LD. Follow `docs/SEO_CHECKLIST.md`.
+   `metadata` (title, description, canonical with trailing slash), be added to
+   `sitemap.ts`, and get relevant JSON-LD. Follow `docs/SEO_CHECKLIST.md`.
 6. **Respect the design system.** Use the Tailwind theme tokens
    (`bg-cream`, `text-ink`, `text-muted`, `border-border`, `text-terracotta`,
    `text-forest`) — never raw hexes in components. See `docs/DESIGN_SYSTEM.md`.
@@ -39,10 +42,10 @@ touching build/deploy. `PLAN.md` is the roadmap.
 
 - `npm run dev` — dev server (webpack; polling via `.env.local` for low
   file-watch environments). `npm run dev:turbo` for Turbopack on normal machines.
-- `npm run build` — production build (`output: standalone`).
-- `npm run preview` — build + serve production locally.
+- `npm run build` — static export to `out/` (`output: "export"`).
+- `npm run preview` — build + serve `out/` locally (static).
 - `npm run typecheck` / `npm run lint` — must pass before committing.
-- `npm run package:cpanel` — assemble the cPanel/Passenger deploy bundle.
+- `npm run package:cpanel` — build + zip `out/` for cPanel upload (see DEPLOY.md).
 
 ## Definition of done for a change
 

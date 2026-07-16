@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "Ethics & Engagement Standards",
   description:
     "The ethical standards that govern every Meridian Repute engagement: no fabricated reviews, no suppression of truthful reporting, and legally compliant reputation defense.",
-  alternates: { canonical: "/ethics-standards" },
+  alternates: { canonical: "/ethics-standards/" },
 };
 
 export default function EthicsStandardsPage() {

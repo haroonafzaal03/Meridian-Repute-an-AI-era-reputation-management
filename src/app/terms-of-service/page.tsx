@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: "Terms of Service",
   description:
     "The terms governing use of the Meridian Repute website and our reputation intelligence, executive branding, and advisory services.",
-  alternates: { canonical: "/terms-of-service" },
+  alternates: { canonical: "/terms-of-service/" },
 };
 
 export default function TermsOfServicePage() {
