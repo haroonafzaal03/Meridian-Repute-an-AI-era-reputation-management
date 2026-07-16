@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { OrbitLabels } from "@/components/orbit-labels";
@@ -40,9 +41,14 @@ export function About() {
             style={{ top: "6%", left: "6%" }}
           />
           <div className="relative flex h-full w-full items-center justify-center overflow-hidden rounded-[63%_37%_54%_46%/55%_45%_55%_45%] bg-paper shadow-[0_40px_80px_rgba(26,26,26,0.14)]">
-            <span className="px-8 text-center text-xs tracking-[0.2em] text-muted uppercase">
-              Brand visual placeholder
-            </span>
+            <Image
+              src="/brand-visual.webp"
+              alt="Meridian Repute reputation intelligence dashboard showing an AI Visibility Score, sentiment analysis, and platform monitoring"
+              width={852}
+              height={609}
+              className="h-full w-full object-cover"
+              priority
+            />
           </div>
         </div>
 
