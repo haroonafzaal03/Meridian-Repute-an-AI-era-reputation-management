@@ -9,14 +9,18 @@ export function HowItWorks() {
       className="px-6 py-24 sm:py-32"
     >
       <ScrollReveal className="mx-auto flex w-full max-w-4xl flex-col gap-12">
-        <div className="flex flex-col items-center gap-5 text-center">
+        <div className="relative flex flex-col items-center gap-5 text-center">
           <span className="text-xs font-light tracking-[0.5em] text-muted uppercase">
             How It Works
           </span>
           <h2
             id="how-it-works-heading"
-            className="max-w-2xl text-[clamp(20px,3vw,32px)] leading-[1.4] font-extralight"
+            className="relative max-w-2xl text-[clamp(20px,3vw,32px)] leading-[1.4] font-extralight"
           >
+            <span
+              aria-hidden
+              className="absolute -top-3 -right-4 h-2 w-2 rounded-full bg-terracotta [animation:dot-float_3.4s_ease-in-out_infinite] [box-shadow:0_0_8px_rgba(168,98,63,0.6)] sm:-right-6"
+            />
             How AI Reputation Intelligence Works
           </h2>
           <p className="max-w-xl text-[clamp(12px,1.3vw,14px)] leading-[1.9] font-light text-muted">

@@ -114,9 +114,17 @@ export function Hero() {
           </span>
           <span className="h-px w-6 bg-terracotta" />
         </div>
-        <h1 className="text-[clamp(24px,5.1vw,76px)] leading-[1.14] font-extralight tracking-tight">
+        <h1 className="text-[clamp(24px,5.1vw,76px)] leading-[1.2] font-extralight [letter-spacing:-0.005em]">
           <span className="sr-only">Meridian Repute — AI Reputation Intelligence. </span>
-          Your reputation speaks{" "}
+          Your reputation{" "}
+          <span className="relative inline-block">
+            <span
+              aria-hidden
+              className="absolute -top-[0.55em] left-[0.08em] h-[0.14em] w-[0.14em] rounded-full bg-terracotta [animation:dot-float_3s_ease-in-out_infinite] [box-shadow:0_0_0.5em_rgba(168,98,63,0.6)]"
+            />
+            speaks
+          </span>
+          <br />
           <span className="text-terracotta italic">before you do.</span>
         </h1>
       </div>
