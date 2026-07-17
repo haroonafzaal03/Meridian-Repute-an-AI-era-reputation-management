@@ -120,13 +120,14 @@ export function Hero() {
           <span className="relative inline-block">
             <span
               aria-hidden
-              className="absolute -top-[0.55em] left-[0.08em] h-[0.14em] w-[0.14em] rounded-full bg-terracotta [animation:dot-float_3s_ease-in-out_infinite] [box-shadow:0_0_0.5em_rgba(168,98,63,0.6)]"
+              className="absolute top-[0.16em] left-[0.12em] h-[0.13em] w-[0.13em] rounded-full bg-terracotta [animation:dot-float_3s_ease-in-out_infinite] [box-shadow:0_0_0.5em_rgba(168,98,63,0.6)]"
             />
             speaks
           </span>
           <br />
           <span className="text-terracotta italic">before you do.</span>
         </h1>
+        <span aria-hidden className="mt-2 h-px w-16 bg-terracotta" />
       </div>
     </section>
   );
