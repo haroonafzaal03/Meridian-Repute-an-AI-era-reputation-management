@@ -3,45 +3,42 @@
 
 Options -MultiViews -Indexes
 
-# ─── Force HTTPS + canonical www host ────────────────────────────────────────
 RewriteEngine On
 
-# http → https
-RewriteCond %{HTTPS} off
-RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# Never redirect ACME / DCV validation requests — AutoSSL and Sectigo
+# HTTP validation fetch plaintext files from here.
+RewriteRule ^\.well-known/ - [L]
 
-# non-www → www (canonical host is https://www.meridianrepute.com)
-RewriteCond %{HTTP_HOST} ^meridianrepute\.com$ [NC]
-RewriteRule ^ https://www.meridianrepute.com%{REQUEST_URI} [L,R=301]
+# TEMPORARY: apex is canonical because the cert does not yet cover www.
+# Once the new cert lists both names, swap the second condition to
+#   %{HTTP_HOST} ^meridianrepute\.com$
+# and the target to https://www.meridianrepute.com to restore www-canonical.
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} ^www\.meridianrepute\.com$ [NC]
+RewriteRule ^ https://meridianrepute.com%{REQUEST_URI} [L,R=301]
 
-# Routes are exported as <route>/index.html (trailingSlash), so Apache's
-# DirectoryIndex serves clean URLs like /privacy-policy/ with no extra rules.
-
-# ─── Custom 404 ──────────────────────────────────────────────────────────────
 ErrorDocument 404 /404.html
 
-# ─── Open Graph image has no file extension — force its MIME type ─────────────
 <Files "opengraph-image">
   ForceType image/png
 </Files>
 
-# ─── Security headers ────────────────────────────────────────────────────────
 <IfModule mod_headers.c>
   Header always set X-Content-Type-Options "nosniff"
   Header always set X-Frame-Options "SAMEORIGIN"
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
-  Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
-  # Long-cache Next's fingerprinted static assets.
+
+  # Enable only after the cert is verified working on BOTH hostnames.
+  # Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+
   <FilesMatch "\.(?:js|css|woff2?|svg|png|jpg|jpeg|gif|webp|avif|ico)$">
     Header set Cache-Control "public, max-age=31536000, immutable"
   </FilesMatch>
-  # Never cache HTML (so content updates show immediately).
   <FilesMatch "\.html$">
     Header set Cache-Control "public, max-age=0, must-revalidate"
   </FilesMatch>
 </IfModule>
 
-# ─── Compression ─────────────────────────────────────────────────────────────
 <IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/javascript application/json image/svg+xml
 </IfModule>

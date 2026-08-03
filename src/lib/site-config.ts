@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "Meridian Repute",
   tagline: "Your reputation speaks before you do.",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.meridianrepute.com",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://meridianrepute.com",
   description:
     "Meridian Repute builds, protects, and strengthens reputation in the AI era — AI visibility assessments, executive branding, online reputation management, and crisis communication strategy for organizations and executives.",
   email: "info@meridianrepute.com",
