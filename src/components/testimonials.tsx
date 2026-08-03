@@ -78,13 +78,25 @@ export function Testimonials() {
                   className="absolute top-0 left-0 h-[40%] w-[3px]"
                   style={{ backgroundColor: accentColor[t.accent], opacity: 0.6 }}
                 />
-                <div
-                  className="-mt-[46px] flex h-[60px] w-[60px] flex-shrink-0 items-center justify-center rounded-full border-2 border-cream bg-cream text-[15px] font-light tracking-[0.05em] shadow-[0_0_0_1px_#c9c4bb]"
-                  style={{ color: accentColor[t.accent] }}
-                  aria-hidden
-                >
-                  {initials(t.name)}
-                </div>
+                {t.photo ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={t.photo}
+                    alt={t.name}
+                    width={60}
+                    height={60}
+                    loading="lazy"
+                    className="-mt-[46px] h-[60px] w-[60px] flex-shrink-0 rounded-full border-2 border-cream object-cover shadow-[0_0_0_1px_#c9c4bb]"
+                  />
+                ) : (
+                  <div
+                    className="-mt-[46px] flex h-[60px] w-[60px] flex-shrink-0 items-center justify-center rounded-full border-2 border-cream bg-cream text-[15px] font-light tracking-[0.05em] shadow-[0_0_0_1px_#c9c4bb]"
+                    style={{ color: accentColor[t.accent] }}
+                    aria-hidden
+                  >
+                    {initials(t.name)}
+                  </div>
+                )}
                 <p className="text-[clamp(13px,1.4vw,15px)] leading-[1.9] font-light italic">
                   &ldquo;{t.quote}&rdquo;
                 </p>

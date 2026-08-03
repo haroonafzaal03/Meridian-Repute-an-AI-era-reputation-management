@@ -43,6 +43,7 @@ export const services = [
 export const testimonials = [
   {
     id: "testimonial-1",
+    photo: "/reviews/daniel.webp",
     quote:
       "Meridian Repute gave us a completely new perspective on how AI understands our company. Their insights were practical, data-driven, and immediately actionable.",
     name: "Daniel",
@@ -51,6 +52,7 @@ export const testimonials = [
   },
   {
     id: "testimonial-2",
+    photo: "/reviews/alex-brogan.webp",
     quote:
       "The audit uncovered opportunities we hadn't considered before. The level of research and clarity behind every recommendation was genuinely impressive.",
     name: "Alex Brogan",
@@ -59,6 +61,7 @@ export const testimonials = [
   },
   {
     id: "testimonial-3",
+    photo: "/reviews/jake-hall.webp",
     quote:
       "What stood out most was the evidence-based approach. Every recommendation was backed by real data rather than assumptions, making it easy to prioritize our next steps.",
     name: "Jake Hall",
@@ -67,6 +70,7 @@ export const testimonials = [
   },
   {
     id: "testimonial-4",
+    photo: "/reviews/nicole-wolter.webp",
     quote:
       "Meridian Repute helped us understand our digital reputation from an AI perspective. The findings were insightful, well-structured, and highly relevant to our business.",
     name: "Nicole Wolter",
@@ -75,6 +79,7 @@ export const testimonials = [
   },
   {
     id: "testimonial-5",
+    photo: "/reviews/cedrik-neike.webp",
     quote:
       "The final report was exceptionally detailed and professionally presented. It gave our leadership team a clear roadmap for strengthening our online authority and credibility.",
     name: "Cedrik Neike",
@@ -83,6 +88,7 @@ export const testimonials = [
   },
   {
     id: "testimonial-6",
+    photo: "/reviews/tina-muller.webp",
     quote:
       "The team's methodology is unlike traditional SEO or reputation services. Their AI-first approach provided strategic insights that we can continue building on.",
     name: "Tina Müller",
@@ -91,6 +97,7 @@ export const testimonials = [
   },
   {
     id: "testimonial-7",
+    photo: "/reviews/ari-reid.webp",
     quote:
       "We appreciated the depth of analysis and attention to detail. The recommendations were practical, realistic, and aligned with our long-term business goals.",
     name: "Ari Reid",
@@ -99,6 +106,7 @@ export const testimonials = [
   },
   {
     id: "testimonial-8",
+    photo: "/reviews/glennda-baker.webp",
     quote:
       "Working with Meridian Repute was a valuable experience. Their intelligence-driven assessment highlighted both our strengths and the areas where we could improve our executive and brand presence.",
     name: "Glennda Baker",
@@ -107,6 +115,7 @@ export const testimonials = [
   },
   {
     id: "testimonial-9",
+    photo: "/reviews/mauricio-umansky.webp",
     quote:
       "The quality of research, reporting, and strategic thinking exceeded our expectations. Meridian Repute has developed a distinctive approach to reputation intelligence.",
     name: "Mauricio Umansky",
