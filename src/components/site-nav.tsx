@@ -1,18 +1,31 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { navLinks } from "@/lib/content";
 
 export function SiteNav() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 300);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <>
-      {/* Logo lockup — top-left, opposite the menu */}
+      {/* Logo — appears top-right (beside the menu) once scrolled past the hero */}
       <a
         href="#hero"
         aria-label="Meridian Repute — home"
-        className="fixed top-7 left-7 z-50 flex items-center gap-2.5 rounded-full border border-border bg-cream/70 py-1.5 pr-4 pl-1.5 backdrop-blur-sm transition-[letter-spacing] duration-300"
+        className="fixed top-7 right-[84px] z-50 flex items-center gap-2.5 rounded-full border border-border bg-cream/70 py-1.5 pr-4 pl-1.5 backdrop-blur-sm transition-[opacity,transform] duration-500"
+        style={{
+          opacity: scrolled ? 1 : 0,
+          transform: scrolled ? "translateY(0)" : "translateY(-8px)",
+          pointerEvents: scrolled ? "auto" : "none",
+        }}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/icon.svg" alt="" width={30} height={30} className="h-[30px] w-[30px]" />
