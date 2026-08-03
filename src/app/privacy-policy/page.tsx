@@ -120,9 +120,9 @@ export default function PrivacyPolicyPage() {
 
       <h2>9 — Changes to This Policy</h2>
       <p>
-        We may update this policy from time to time. The &ldquo;Last
-        updated&rdquo; date above reflects the most recent revision. Material
-        changes will be posted on this page.
+        We may update this policy from time to time. The current version is
+        always the one published on this page, and material changes will be
+        posted here.
       </p>
 
       <h2>10 — Contact</h2>

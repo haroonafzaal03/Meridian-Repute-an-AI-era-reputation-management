@@ -2,11 +2,11 @@ import Link from "next/link";
 
 export function PolicyShell({
   title,
-  lastUpdated,
   children,
 }: {
   title: string;
-  lastUpdated: string;
+  /** Kept for callers; no longer displayed. */
+  lastUpdated?: string;
   children: React.ReactNode;
 }) {
   return (
@@ -22,12 +22,9 @@ export function PolicyShell({
         </Link>
       </div>
 
-      <h1 className="mb-3 text-center text-[clamp(22px,4vw,30px)] font-extralight tracking-[0.2em] uppercase">
+      <h1 className="mb-18 text-center text-[clamp(22px,4vw,30px)] font-extralight tracking-[0.2em] uppercase">
         {title}
       </h1>
-      <p className="mb-18 text-center text-[11px] tracking-[0.3em] text-muted uppercase">
-        Last updated · {lastUpdated}
-      </p>
 
       <div className="policy-prose">{children}</div>
 

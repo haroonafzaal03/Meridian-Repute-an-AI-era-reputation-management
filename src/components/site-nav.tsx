@@ -8,6 +8,19 @@ export function SiteNav() {
 
   return (
     <>
+      {/* Logo lockup — top-left, opposite the menu */}
+      <a
+        href="#hero"
+        aria-label="Meridian Repute — home"
+        className="fixed top-7 left-7 z-50 flex items-center gap-2.5 rounded-full border border-border bg-cream/70 py-1.5 pr-4 pl-1.5 backdrop-blur-sm transition-[letter-spacing] duration-300"
+      >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/icon.svg" alt="" width={30} height={30} className="h-[30px] w-[30px]" />
+        <span className="hidden text-[11px] font-light tracking-[0.28em] text-ink uppercase sm:inline">
+          Meridian Repute
+        </span>
+      </a>
+
       <button
         onClick={() => setOpen((o) => !o)}
         aria-label={open ? "Close menu" : "Open menu"}

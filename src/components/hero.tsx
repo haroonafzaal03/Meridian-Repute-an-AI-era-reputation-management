@@ -16,41 +16,31 @@ const orbitPlatforms = [
   { name: "TikTok", color: "#EE1D52" },
 ];
 
-const metricLabels = [
-  { name: "Reach", value: "2.4M", color: "#A8623F" },
-  { name: "Reputation Score", value: "94", color: "#2E5951" },
-  { name: "Blog Count", value: "128", color: "#A8623F" },
-  { name: "Video Count", value: "46", color: "#2E5951" },
-  { name: "Mentions", value: "1.2K", color: "#A8623F" },
-  { name: "Citations", value: "340", color: "#2E5951" },
-  { name: "AI Visibility Score", value: "88%", color: "#A8623F" },
-];
-
 function WordmarkRing({
   dot,
 }: {
   dot: { background: string; boxShadow: string };
 }) {
   return (
-    <div className="relative aspect-square w-[min(78vw,230px)] opacity-0 [animation:hero-ring-in_1.4s_cubic-bezier(0.2,0.7,0.2,1)_forwards,breathe_8s_ease-in-out_1.4s_infinite]">
+    <div className="relative aspect-square w-[min(72vw,320px)] opacity-0 [animation:hero-ring-in_1.4s_cubic-bezier(0.2,0.7,0.2,1)_forwards,breathe_8s_ease-in-out_1.4s_infinite]">
       <PhysicsDots
         boundary="circle"
-        pad={14}
-        dots={[{ size: 6, background: dot.background, boxShadow: dot.boxShadow, x: 14, y: -12, vx: 0.34, vy: 0.42 }]}
+        pad={16}
+        dots={[{ size: 7, background: dot.background, boxShadow: dot.boxShadow, x: 18, y: -14, vx: 0.34, vy: 0.42 }]}
       />
-      <div className="flex h-full w-full flex-col items-center justify-center gap-3 rounded-full border border-border bg-cream/80 p-3">
+      <div className="flex h-full w-full flex-col items-center justify-center gap-4 rounded-full border border-border bg-cream/80 p-4">
         <span
           aria-hidden
-          className="text-[clamp(12px,3vw,19px)] font-extralight tracking-[0.2em] whitespace-nowrap uppercase opacity-0 [animation:hero-word-in_1.6s_cubic-bezier(0.2,0.7,0.2,1)_0.3s_both]"
+          className="text-[clamp(16px,4.4vw,30px)] font-extralight tracking-[0.22em] whitespace-nowrap uppercase opacity-0 [animation:hero-word-in_1.6s_cubic-bezier(0.2,0.7,0.2,1)_0.3s_both]"
         >
           Meridian
         </span>
-        <span aria-hidden className="flex items-center gap-2">
-          <span className="h-px w-4 origin-right bg-ink [animation:hairline-grow_1s_ease_0.9s_both]" />
-          <span className="text-[clamp(6px,1.3vw,8px)] font-light tracking-[0.4em] whitespace-nowrap uppercase">
+        <span aria-hidden className="flex items-center gap-2.5">
+          <span className="h-px w-6 origin-right bg-ink [animation:hairline-grow_1s_ease_0.9s_both]" />
+          <span className="text-[clamp(8px,1.8vw,11px)] font-light tracking-[0.4em] whitespace-nowrap uppercase">
             Repute
           </span>
-          <span className="h-px w-4 origin-left bg-ink [animation:hairline-grow_1s_ease_0.9s_both]" />
+          <span className="h-px w-6 origin-left bg-ink [animation:hairline-grow_1s_ease_0.9s_both]" />
         </span>
       </div>
     </div>
@@ -90,18 +80,12 @@ export function Hero() {
         <div className="absolute top-0 left-0 h-full w-3/5 mix-blend-soft-light [animation:shimmer-sweep_9s_ease-in-out_infinite] [background:linear-gradient(100deg,transparent_40%,rgba(255,255,255,0.55)_50%,transparent_60%)]" />
       </div>
 
-      {/* Twin rings */}
-      <div className="relative flex flex-nowrap items-center justify-center gap-[clamp(28px,10vw,180px)]">
-        <div className="relative flex aspect-square w-[min(42vw,290px)] flex-shrink-0 items-center justify-center">
+      {/* Ring */}
+      <div className="relative flex items-center justify-center">
+        <div className="relative flex aspect-square w-[min(64vw,320px)] flex-shrink-0 items-center justify-center">
           <OrbitLabels items={orbitPlatforms} radiusPercent={50} />
           <div aria-hidden className="pointer-events-none absolute inset-[-14px] rounded-full border border-dashed border-[rgba(26,26,26,0.14)]" />
           <WordmarkRing dot={{ background: "#A8623F", boxShadow: "0 0 8px rgba(168,98,63,0.6)" }} />
-        </div>
-
-        <div className="relative flex aspect-square w-[min(42vw,290px)] flex-shrink-0 items-center justify-center">
-          <OrbitLabels items={metricLabels} radiusPercent={50} />
-          <div aria-hidden className="pointer-events-none absolute inset-[-14px] rounded-full border border-dashed border-[rgba(26,26,26,0.14)]" />
-          <WordmarkRing dot={{ background: "#2E5951", boxShadow: "0 0 8px rgba(46,89,81,0.55)" }} />
         </div>
       </div>
 
@@ -116,7 +100,10 @@ export function Hero() {
         </div>
         <h1 className="text-[clamp(24px,5.1vw,76px)] leading-[1.2] font-extralight [letter-spacing:-0.005em]">
           <span className="sr-only">Meridian Repute — AI Reputation Intelligence. </span>
-          Your reputation{" "}
+          <span className="underline decoration-terracotta decoration-2 underline-offset-[0.18em]">
+            Your
+          </span>{" "}
+          reputation{" "}
           <span className="relative inline-block">
             <span
               aria-hidden
@@ -127,7 +114,6 @@ export function Hero() {
           <br />
           <span className="text-terracotta italic">before you do.</span>
         </h1>
-        <span aria-hidden className="mt-2 h-px w-16 bg-terracotta" />
       </div>
     </section>
   );

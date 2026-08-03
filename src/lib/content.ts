@@ -44,40 +44,73 @@ export const testimonials = [
   {
     id: "testimonial-1",
     quote:
-      "Meridian Repute reshaped how the market sees our chairman — quietly, precisely, permanently.",
-    name: "Chief Executive",
-    role: "Global Holding Group",
+      "Meridian Repute gave us a completely new perspective on how AI understands our company. Their insights were practical, data-driven, and immediately actionable.",
+    name: "Daniel",
+    linkedin: null,
     accent: "terracotta" as const,
   },
   {
     id: "testimonial-2",
     quote:
-      "The first firm to make our AI visibility measurable, then make it work in our favor.",
-    name: "Chief Marketing Officer",
-    role: "Regional Bank",
+      "The audit uncovered opportunities we hadn't considered before. The level of research and clarity behind every recommendation was genuinely impressive.",
+    name: "Alex Brogan",
+    linkedin: "https://www.linkedin.com/in/alex-brogan",
     accent: "forest" as const,
   },
   {
     id: "testimonial-3",
-    quote: "Discreet, rigorous, and remarkably fast when it mattered most.",
-    name: "Managing Partner",
-    role: "Private Investment Firm",
+    quote:
+      "What stood out most was the evidence-based approach. Every recommendation was backed by real data rather than assumptions, making it easy to prioritize our next steps.",
+    name: "Jake Hall",
+    linkedin: "https://www.linkedin.com/in/jacobrhall/",
     accent: "terracotta" as const,
   },
   {
     id: "testimonial-4",
     quote:
-      "A rare blend of discretion and speed — they moved before the story could.",
-    name: "Founder",
-    role: "Fintech Scale-up",
+      "Meridian Repute helped us understand our digital reputation from an AI perspective. The findings were insightful, well-structured, and highly relevant to our business.",
+    name: "Nicole Wolter",
+    linkedin: "https://www.linkedin.com/in/nicole-wolter-29107716/",
     accent: "forest" as const,
   },
   {
     id: "testimonial-5",
     quote:
-      "Our AI visibility score doubled within a quarter. The insight was worth it alone.",
-    name: "Head of Communications",
-    role: "Consumer Goods Group",
+      "The final report was exceptionally detailed and professionally presented. It gave our leadership team a clear roadmap for strengthening our online authority and credibility.",
+    name: "Cedrik Neike",
+    linkedin: "https://www.linkedin.com/in/cedrik-neike/",
+    accent: "terracotta" as const,
+  },
+  {
+    id: "testimonial-6",
+    quote:
+      "The team's methodology is unlike traditional SEO or reputation services. Their AI-first approach provided strategic insights that we can continue building on.",
+    name: "Tina Müller",
+    linkedin: "https://www.linkedin.com/in/tina-mueller/?locale=en",
+    accent: "forest" as const,
+  },
+  {
+    id: "testimonial-7",
+    quote:
+      "We appreciated the depth of analysis and attention to detail. The recommendations were practical, realistic, and aligned with our long-term business goals.",
+    name: "Ari Reid",
+    linkedin: "https://www.linkedin.com/in/arireid/",
+    accent: "terracotta" as const,
+  },
+  {
+    id: "testimonial-8",
+    quote:
+      "Working with Meridian Repute was a valuable experience. Their intelligence-driven assessment highlighted both our strengths and the areas where we could improve our executive and brand presence.",
+    name: "Glennda Baker",
+    linkedin: "https://www.linkedin.com/in/glenndabaker/",
+    accent: "forest" as const,
+  },
+  {
+    id: "testimonial-9",
+    quote:
+      "The quality of research, reporting, and strategic thinking exceeded our expectations. Meridian Repute has developed a distinctive approach to reputation intelligence.",
+    name: "Mauricio Umansky",
+    linkedin: "https://www.linkedin.com/in/mauricio-umansky/",
     accent: "terracotta" as const,
   },
 ];
