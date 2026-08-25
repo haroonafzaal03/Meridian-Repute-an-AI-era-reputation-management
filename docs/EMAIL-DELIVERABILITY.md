@@ -1,7 +1,7 @@
 # Consultation Email Deliverability — Fixing Spam Placement
 
 The consultation form (`public/contact.php`) sends mail via PHP `mail()` to
-`info@meridianrepute.com`. Messages were landing in spam. This document lists
+`people@meridianrepute.com`. Messages were landing in spam. This document lists
 every cause and the exact fix. Do the **Code** part (already committed) plus the
 **DNS/Hosting** part (you apply these).
 
@@ -11,9 +11,9 @@ Server IP: `198.54.116.140` · Host: cPanel/Apache (Namecheap) · DNS: Namecheap
 
 ## 1. Code (done — `public/contact.php`)
 
-- **Envelope sender / Return-Path** set via `mail()`'s 5th arg `-f info@meridianrepute.com`
+- **Envelope sender / Return-Path** set via `mail()`'s 5th arg `-f people@meridianrepute.com`
   so the bounce address aligns with SPF.
-- **From:** `"Meridian Repute" <info@meridianrepute.com>` (a domain mailbox — never the visitor).
+- **From:** `"Meridian Repute" <people@meridianrepute.com>` (a domain mailbox — never the visitor).
 - **Reply-To:** the visitor's address (so replies reach them), validated + newline-stripped.
 - Full headers: `Message-ID`, `Date`, `MIME-Version`, `Content-Type: text/plain; charset=utf-8`.
 - Honeypot (`website` field) preserved; header-injection stripped from name/email.
@@ -26,7 +26,7 @@ Server IP: `198.54.116.140` · Host: cPanel/Apache (Namecheap) · DNS: Namecheap
 ## 2. DNS / Hosting (you apply)
 
 ### 2a. Confirm the mailbox exists
-cPanel → **Email Accounts** → ensure `info@meridianrepute.com` exists (create if missing).
+cPanel → **Email Accounts** → ensure `people@meridianrepute.com` exists (create if missing).
 
 ### 2b. SPF — Namecheap → Advanced DNS → add TXT
 - **Host:** `@`
@@ -44,7 +44,7 @@ cPanel → **Email Accounts** → ensure `info@meridianrepute.com` exists (creat
 ### 2d. DMARC — Namecheap → Advanced DNS → add TXT
 - **Host:** `_dmarc`
 - **Value (start in monitor mode):**
-  `v=DMARC1; p=none; rua=mailto:info@meridianrepute.com; fo=1; adkim=s; aspf=s`
+  `v=DMARC1; p=none; rua=mailto:people@meridianrepute.com; fo=1; adkim=s; aspf=s`
 - After a few days with SPF + DKIM passing aligned, tighten to `p=quarantine`.
 
 ### 2e. Verify
@@ -64,7 +64,7 @@ authenticated SMTP with the domain mailbox using **PHPMailer**
 1. Install PHPMailer: `composer require phpmailer/phpmailer` (or upload its `src/`).
 2. Set SMTP env vars in cPanel (keeps the password out of the webroot):
    - `MR_SMTP_HOST` = `mail.meridianrepute.com` (or `localhost`)
-   - `MR_SMTP_USER` = `info@meridianrepute.com`
+   - `MR_SMTP_USER` = `people@meridianrepute.com`
    - `MR_SMTP_PASS` = the mailbox password
    - `MR_SMTP_PORT` = `587` (STARTTLS) or `465` (SMTPS)
 3. Point the form action at `contact.smtp.php` (or rename it over `contact.php`).

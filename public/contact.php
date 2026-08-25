@@ -4,7 +4,7 @@
 // No framework required — runs on any cPanel host with PHP + mail().
 //
 // DELIVERABILITY (why mail lands in inbox vs spam):
-//   1. From: is ALWAYS an address on this domain (info@meridianrepute.com), never
+//   1. From: is ALWAYS an address on this domain (people@meridianrepute.com), never
 //      the visitor's address. Reply-To carries the visitor so replies still work.
 //   2. The envelope sender / Return-Path is set to that same domain address via
 //      the -f parameter, so it aligns with SPF.
@@ -16,8 +16,8 @@ header('Content-Type: application/json; charset=utf-8');
 
 // ─── Configure this ──────────────────────────────────────────────────────────
 $DOMAIN  = 'meridianrepute.com';
-$TO      = 'info@' . $DOMAIN;          // where consultation requests go
-$FROM    = 'info@' . $DOMAIN;          // MUST be a real mailbox on this domain
+$TO      = 'people@' . $DOMAIN;          // where consultation requests go
+$FROM    = 'people@' . $DOMAIN;          // MUST be a real mailbox on this domain
 $SUBJECT = 'New consultation request — Meridian Repute';
 // ─────────────────────────────────────────────────────────────────────────────
 

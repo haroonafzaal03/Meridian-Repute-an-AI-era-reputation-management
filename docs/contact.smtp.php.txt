@@ -46,7 +46,7 @@ if ($name === '' || $message === '' || !filter_var($email, FILTER_VALIDATE_EMAIL
 //     environment variables in cPanel, or in a file above public_html that
 //     you include here. Hardcoding works but is less safe. ---
 $SMTP_HOST = getenv('MR_SMTP_HOST') ?: 'localhost';                  // e.g. mail.meridianrepute.com
-$SMTP_USER = getenv('MR_SMTP_USER') ?: 'info@meridianrepute.com';
+$SMTP_USER = getenv('MR_SMTP_USER') ?: 'people@meridianrepute.com';
 $SMTP_PASS = getenv('MR_SMTP_PASS') ?: '';                          // set MR_SMTP_PASS in cPanel env
 $SMTP_PORT = (int) (getenv('MR_SMTP_PORT') ?: 587);                  // 587 STARTTLS, or 465 SMTPS
 
@@ -64,8 +64,8 @@ try {
     $mail->CharSet    = 'UTF-8';
 
     // From is the authenticated domain mailbox (aligns SPF + DKIM).
-    $mail->setFrom('info@meridianrepute.com', 'Meridian Repute');
-    $mail->addAddress('info@meridianrepute.com');
+    $mail->setFrom('people@meridianrepute.com', 'Meridian Repute');
+    $mail->addAddress('people@meridianrepute.com');
     // Visitor goes in Reply-To, never From.
     $mail->addReplyTo($email, $name);
 
