@@ -16,21 +16,21 @@ export function SiteNav() {
 
   return (
     <>
-      {/* Logo — appears top-right (beside the menu) once scrolled past the hero */}
+      {/* Logo — appears top-LEFT once scrolled past the hero */}
       <a
         href="#hero"
         aria-label="Meridian Repute — home"
-        className="fixed top-7 right-[84px] z-50 flex items-center gap-2.5 rounded-full border border-border bg-cream/70 py-1.5 pr-4 pl-1.5 backdrop-blur-sm transition-[opacity,transform] duration-500"
+        className="fixed top-7 left-7 z-50 flex items-center gap-2.5 rounded-full border border-border bg-cream/70 py-2 pr-5 pl-4 backdrop-blur-sm transition-[opacity,transform] duration-500"
         style={{
           opacity: scrolled ? 1 : 0,
           transform: scrolled ? "translateY(0)" : "translateY(-8px)",
           pointerEvents: scrolled ? "auto" : "none",
         }}
       >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/icon.svg" alt="" width={30} height={30} className="h-[30px] w-[30px]" />
-        <span className="hidden text-[11px] font-light tracking-[0.28em] text-ink uppercase sm:inline">
-          Meridian Repute
+        <span aria-hidden className="h-[7px] w-[7px] flex-shrink-0 rounded-full bg-terracotta" />
+        <span className="text-[12px] whitespace-nowrap text-ink uppercase">
+          <span className="font-normal tracking-[0.24em]">Meridian</span>{" "}
+          <span className="font-light tracking-[0.24em]">Repute</span>
         </span>
       </a>
 
